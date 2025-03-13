@@ -1,0 +1,23 @@
+<Grid>
+    <Grid.Resources>
+        <CollectionViewSource x:Key="customerViewSource"/>
+        <CollectionViewSource x:Key="customerOrdersViewSource" 
+            Source="{Binding Orders, Source={StaticResource customerViewSource}}"/>
+    </Grid.Resources>
+    
+    <!-- Кнопки навигации -->
+    <StackPanel Orientation="Horizontal" Grid.Row="0">
+        <Button Content="Добавить" Click="AddCustomer_Click"/>
+        <Button Content="Удалить" Click="DeleteCustomer_Click"/>
+        <Button Content="Сохранить" Click="Save_Click"/>
+    </StackPanel>
+
+    <!-- Форма Customers -->
+    <Grid DataContext="{StaticResource customerViewSource}" Grid.Row="1">
+        <!-- Добавьте TextBox с привязкой к свойствам Customer -->
+    </Grid>
+
+    <!-- Сетка Orders -->
+    <DataGrid ItemsSource="{Binding Source={StaticResource customerOrdersViewSource}}" 
+              Grid.Row="2"/>
+</Grid>
